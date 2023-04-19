@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="29" height="43" viewBox="0 0 29 43">
+  <g id="Group_13871" data-name="Group 13871" transform="translate(11175.5 1037.35)">
+    <g id="Mobile" transform="translate(-11175 -1037)">
+      <rect id="Rectangle-4" width="28" height="42" rx="2" transform="translate(0 0.15)" fill="none" stroke="#000" stroke-width="1"/>
+      <g id="Oval" transform="translate(10.716 31.434)">
+        <ellipse id="Ellipse_558" data-name="Ellipse 558" cx="3" cy="3.5" rx="3" ry="3.5" transform="translate(0.284 -0.284)" fill="none" stroke="#000" stroke-width="1"/>
+      </g>
+    </g>
+    <g id="Rectangle_85352" data-name="Rectangle 85352" transform="translate(-11171 -1030.85)" fill="none" stroke="#6bc100" stroke-width="1">
+      <rect width="20" height="6" stroke="none"/>
+      <rect x="0.5" y="0.5" width="19" height="5" fill="none"/>
+    </g>
+    <g id="Rectangle_85353" data-name="Rectangle 85353" transform="translate(-11171 -1023.85)" fill="none" stroke="#6bc100" stroke-width="1">
+      <rect width="10" height="6" stroke="none"/>
+      <rect x="0.5" y="0.5" width="9" height="5" fill="none"/>
+    </g>
+    <g id="Rectangle_85356" data-name="Rectangle 85356" transform="translate(-11171 -1015.85)" fill="none" stroke="#6bc100" stroke-width="1">
+      <rect width="10" height="5" stroke="none"/>
+      <rect x="0.5" y="0.5" width="9" height="4" fill="none"/>
+    </g>
+    <g id="Rectangle_85354" data-name="Rectangle 85354" transform="translate(-11161 -1023.85)" fill="none" stroke="#6bc100" stroke-width="1">
+      <rect width="10" height="6" stroke="none"/>
+      <rect x="0.5" y="0.5" width="9" height="5" fill="none"/>
+    </g>
+    <g id="Rectangle_85355" data-name="Rectangle 85355" transform="translate(-11161 -1015.85)" fill="none" stroke="#6bc100" stroke-width="1">
+      <rect width="10" height="5" stroke="none"/>
+      <rect x="0.5" y="0.5" width="9" height="4" fill="none"/>
+    </g>
+  </g>
+</svg>

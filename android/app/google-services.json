@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "725323713092",
+    "project_id": "ct-wearables-portal-pf",
+    "storage_bucket": "ct-wearables-portal-pf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:725323713092:android:f04f48776e2ff0fda74a11",
+        "android_client_info": {
+          "package_name": "com.ctepl.wearablesclinicaltrialsdev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpU32QblFzJVjIu7Zf67wyWcy7kq2OiBE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "725323713092-421km1nnk8rtussvo7irvfqm5v7008m3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "725323713092-9smeq4fian673c5899ru5n3jn0cnighb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ctepl.wearablesclinicaltrialsdev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

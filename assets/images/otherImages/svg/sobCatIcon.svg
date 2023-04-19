@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="27.305" height="28.713" viewBox="0 0 27.305 28.713">
+  <g id="cat" transform="translate(-68.543 -214.5)">
+    <path id="Path_9708" data-name="Path 9708" d="M78.012,241.582h.917a4.023,4.023,0,0,1,3.555,5.905l-.9,1.694H84.27a1.788,1.788,0,0,1,1.788,1.788v.447H75.777c-2.235,0-7.189-2.124-4.47-10.281,1.6-4.786-.453-7.294-1.757-8.338a1.153,1.153,0,0,1-.185-1.589v0a1.154,1.154,0,0,1,1.557-.281c1.406.935,3.832,3.306,3.512,8.422" transform="translate(0 -8.703)" fill="none" stroke="#464646" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="Path_9709" data-name="Path 9709" d="M93.2,242.713h2.682v-.447a1.788,1.788,0,0,0-1.788-1.788H93.2v-6.071l1.133-1.363a6.706,6.706,0,0,0,1.549-4.286v-2.736a2.083,2.083,0,0,1,2.083-2.083h0a2.235,2.235,0,0,0,2.213-1.919l.059-.412a.894.894,0,0,0-.668-.994l-.254-.064a1.341,1.341,0,0,1-.964-.932l-.033-.115a3.129,3.129,0,0,0-3.009-2.269h-.322V215c-5.364,2.235-5.811,8.493-5.811,8.493S78,224.387,78,237.8v.447" transform="translate(-4.905)" fill="none" stroke="#464646" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <line id="Line_501" data-name="Line 501" y2="2" transform="translate(89.785 215.856)" fill="none" stroke="#464646" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+  </g>
+</svg>

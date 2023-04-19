@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="46.364" height="46.364" viewBox="0 0 46.364 46.364">
+  <g id="beacons" transform="translate(-172.363 -445.656)">
+    <g id="Path_5452" data-name="Path 5452" transform="translate(172.363 445.656)">
+      <path id="Path_9710" data-name="Path 9710" d="M23.182,0A23.182,23.182,0,1,1,0,23.182,23.182,23.182,0,0,1,23.182,0Z" fill="none"/>
+      <path id="Path_9711" data-name="Path 9711" d="M23.182,1a22.188,22.188,0,0,0-8.634,42.62A22.188,22.188,0,0,0,31.816,2.743,22.042,22.042,0,0,0,23.182,1m0-1A23.182,23.182,0,1,1,0,23.181,23.182,23.182,0,0,1,23.182,0Z" fill="#707070"/>
+    </g>
+    <g id="Ellipse_338" data-name="Ellipse 338" transform="translate(181.135 454.429)" fill="none" stroke="#000" stroke-width="1">
+      <circle cx="14.41" cy="14.41" r="14.41" stroke="none"/>
+      <circle cx="14.41" cy="14.41" r="13.91" fill="none"/>
+    </g>
+    <path id="Path_5453" data-name="Path 5453" d="M4110.26-243.321l2.181-5.351,1.7,7.394,2.28-3.578-2.28,11.01Z" transform="translate(-3917.522 709.776)" fill="#41e180"/>
+  </g>
+</svg>

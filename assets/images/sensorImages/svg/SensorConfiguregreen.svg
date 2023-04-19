@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24.032" height="22.697" viewBox="0 0 24.032 22.697">
+  <g id="Configure_Sensor_green" data-name="Configure Sensor green" transform="translate(-34.287 -140.651)">
+    <rect id="Rectangle_2486" data-name="Rectangle 2486" width="24.032" height="22.697" rx="5" transform="translate(34.287 140.651)" fill="#3fd68e"/>
+    <g id="Layer_2" data-name="Layer 2" transform="translate(38.293 144.657)">
+      <g id="layers">
+        <rect id="Rectangle_2488" data-name="Rectangle 2488" width="16.022" height="16.022" transform="translate(16.022 16.022) rotate(180)" fill="#5b629f" opacity="0"/>
+        <path id="Path_5763" data-name="Path 5763" d="M3.158,5.851,8.846,8.942a.34.34,0,0,0,.32,0l5.688-3.091a.294.294,0,0,0-.033-.541L9.133,2.988a.334.334,0,0,0-.254,0L3.192,5.311a.294.294,0,0,0-.033.541Z" transform="translate(-0.996 -0.985)" fill="#5b629f"/>
+        <path id="Path_5764" data-name="Path 5764" d="M14.834,10.4,13.612,9.88,9.179,12.29a.34.34,0,0,1-.32,0L4.426,9.88,3.2,10.4a.32.32,0,0,0,0,.567l5.688,3.271a.307.307,0,0,0,.32,0L14.9,10.968a.32.32,0,0,0-.067-.567Z" transform="translate(-1.008 -3.284)" fill="#5b629f"/>
+        <path id="Path_5765" data-name="Path 5765" d="M14.831,14.874,13.79,14.42,9.177,16.93a.34.34,0,0,1-.32,0L4.243,14.42,3.2,14.874a.327.327,0,0,0,0,.581L8.89,18.793a.34.34,0,0,0,.32,0L14.9,15.455a.327.327,0,0,0-.067-.581Z" transform="translate(-1.006 -4.794)" fill="#5b629f"/>
+      </g>
+    </g>
+  </g>
+</svg>

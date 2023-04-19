@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="78.717" height="78.717" viewBox="0 0 78.717 78.717">
+  <g id="account" transform="translate(-27.628 -140.094)">
+    <rect id="Material_-_Vibrant_Primary_Text_-_Dark" data-name="Material - Vibrant Primary Text - Dark" width="78.717" height="78.717" rx="5" transform="translate(27.628 140.094)" fill="rgba(255,255,255,0.96)"/>
+    <g id="person" transform="translate(43 153.268)">
+      <path id="Path_8961" data-name="Path 8961" d="M18.922,18.911a7.955,7.955,0,1,0-7.955-7.955,7.955,7.955,0,0,0,7.955,7.955Z" transform="translate(4.944 2.967)" fill="#3fd68e"/>
+      <path id="Path_8962" data-name="Path 8962" d="M30.855,38.8a1.989,1.989,0,0,0,1.989-1.989A13.922,13.922,0,1,0,5,36.81,1.989,1.989,0,0,0,6.989,38.8Z" transform="translate(4.944 2.967)" fill="#5b629f"/>
+    </g>
+  </g>
+</svg>

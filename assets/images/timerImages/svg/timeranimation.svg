@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="361.944" height="151.772" viewBox="0 0 361.944 151.772">
+  <g id="time_animation" data-name="time animation" transform="translate(16792.911 11584.621)">
+    <line id="Line_374" data-name="Line 374" y1="4" x2="4" transform="translate(-16787.5 -11582.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_375" data-name="Line 375" y1="4" x2="3" transform="translate(-16742.5 -11542.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_376" data-name="Line 376" y1="4" x2="1" transform="translate(-16681.5 -11511.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_377" data-name="Line 377" y1="4" transform="translate(-16613.5 -11500.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_378" data-name="Line 378" x1="3" y1="3" transform="translate(-16486.5 -11539.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_379" data-name="Line 379" x1="3" y1="3" transform="translate(-16442.5 -11578.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_380" data-name="Line 380" x1="6.5" y1="6" transform="translate(-16441 -11524.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="5"/>
+    <line id="Line_381" data-name="Line 381" x1="4" y1="7" transform="translate(-16483.5 -11484.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="5"/>
+    <line id="Line_382" data-name="Line 382" x1="1.5" y1="8" transform="translate(-16544 -11454.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="5"/>
+    <line id="Line_383" data-name="Line 383" x1="0.5" y1="8" transform="translate(-16612 -11443.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="5"/>
+    <line id="Line_384" data-name="Line 384" y1="7" x2="2.5" transform="translate(-16681.5 -11454.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="5"/>
+    <line id="Line_385" data-name="Line 385" y1="3" x2="5.25" transform="translate(-16789.5 -11524.5)" fill="none" stroke="#6bc100" stroke-linecap="round" stroke-width="5"/>
+    <circle id="Ellipse_339" data-name="Ellipse 339" cx="6" cy="6" r="6" transform="translate(-16552 -11512)" fill="#f85c3a"/>
+    <circle id="Ellipse_340" data-name="Ellipse 340" cx="8" cy="8" r="8" transform="translate(-16749 -11491)" fill="#f85c3a"/>
+  </g>
+</svg>

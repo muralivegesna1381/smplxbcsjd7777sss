@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="41" viewBox="0 0 42 41">
+  <defs>
+    <filter id="Rectangle_2468" x="0" y="0" width="42" height="41" filterUnits="userSpaceOnUse">
+      <feOffset dx="-2" dy="1" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feFlood flood-color="#b8cee2"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <clipPath id="clip-path">
+      <path id="path18" d="M0-47.5H23.2v23.2H0Z" transform="translate(0 47.5)"/>
+    </clipPath>
+  </defs>
+  <g id="Group_2160" data-name="Group 2160" transform="translate(-31 -414)">
+    <g id="Group_2154" data-name="Group 2154" transform="translate(0 -30)">
+      <g transform="matrix(1, 0, 0, 1, 31, 444)" filter="url(#Rectangle_2468)">
+        <g id="Rectangle_2468-2" data-name="Rectangle 2468" transform="translate(5 2)" fill="#fff" stroke="#6bc105" stroke-width="1">
+          <rect width="36" height="35" rx="4" stroke="none"/>
+          <rect x="0.5" y="0.5" width="35" height="34" rx="3.5" fill="none"/>
+        </g>
+      </g>
+      <g id="g10" transform="translate(42.402 498.402)">
+        <g id="g12" transform="translate(0 -47.5)">
+          <g id="g14" clip-path="url(#clip-path)">
+            <g id="g20" transform="translate(7.936 0.61)">
+              <path id="path22" d="M-7.675-2.558A2.442,2.442,0,0,1-10.117-.117h-2.442A2.442,2.442,0,0,1-15-2.558,2.442,2.442,0,0,1-12.558-5h2.442A2.442,2.442,0,0,1-7.675-2.558" transform="translate(15 5)" fill="#ccd6dd"/>
+            </g>
+            <g id="g24" transform="translate(4.273 3.052)">
+              <path id="path26" d="M-15.35-17.908a2.442,2.442,0,0,1-2.442,2.442h-9.767A2.442,2.442,0,0,1-30-17.908v-14.65A2.442,2.442,0,0,1-27.558-35h9.767a2.442,2.442,0,0,1,2.442,2.442Z" transform="translate(30 35)" fill="#e1e8ed"/>
+            </g>
+            <path id="path28" d="M23.4-21.6H8.75V-36.25H23.4Z" transform="translate(-4.477 41.744)" fill="#78b159"/>
+            <g id="g30" transform="translate(7.936 6.715)">
+              <path id="path32" d="M-7.035-2.558H-8.867V-4.39A.61.61,0,0,0-9.477-5H-10.7a.611.611,0,0,0-.61.61v1.831H-13.14a.61.61,0,0,0-.61.61V-.727a.61.61,0,0,0,.61.61h1.831V1.715a.61.61,0,0,0,.61.61h1.221a.61.61,0,0,0,.61-.61V-.117h1.831a.61.61,0,0,0,.61-.61V-1.948a.61.61,0,0,0-.61-.61" transform="translate(13.75 5)" fill="#f5f8fa"/>
+            </g>
+            <g id="g34" transform="translate(7.936 16.482)">
+              <path id="path36" d="M-.64-2.558a.61.61,0,0,1-.61-.61V-4.39A.61.61,0,0,1-.64-5h6.1a.61.61,0,0,1,.61.61v1.221a.61.61,0,0,1-.61.61Z" transform="translate(1.25 5)" fill="#f5f8fa"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

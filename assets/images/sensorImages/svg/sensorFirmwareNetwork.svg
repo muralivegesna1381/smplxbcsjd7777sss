@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+  <g id="firmware_network" transform="translate(-30 -470)">
+    <rect id="Rectangle_2486" data-name="Rectangle 2486" width="18" height="17" rx="5" transform="translate(30 470)" fill="#f0b336"/>
+    <g id="Layer_2" data-name="Layer 2" transform="translate(33 473)">
+      <g id="layers">
+        <rect id="Rectangle_2488" data-name="Rectangle 2488" width="12" height="12" transform="translate(12 12) rotate(180)" fill="#fff" opacity="0"/>
+        <path id="Path_5763" data-name="Path 5763" d="M3.117,5.126l4.26,2.315a.255.255,0,0,0,.24,0l4.26-2.315a.22.22,0,0,0-.025-.4l-4.26-1.74a.25.25,0,0,0-.19,0l-4.26,1.74a.22.22,0,0,0-.025.4Z" transform="translate(-1.497 -1.481)" fill="#fff"/>
+        <path id="Path_5764" data-name="Path 5764" d="M11.872,10.27l-.915-.39-3.32,1.8a.255.255,0,0,1-.24,0l-3.32-1.8-.915.39a.24.24,0,0,0,0,.425l4.26,2.45a.23.23,0,0,0,.24,0l4.26-2.45a.24.24,0,0,0-.05-.425Z" transform="translate(-1.517 -4.94)" fill="#fff"/>
+        <path id="Path_5765" data-name="Path 5765" d="M11.868,14.76l-.78-.34L7.633,16.3a.255.255,0,0,1-.24,0L3.938,14.42l-.78.34a.245.245,0,0,0,0,.435l4.26,2.5a.255.255,0,0,0,.24,0l4.26-2.5a.245.245,0,0,0-.05-.435Z" transform="translate(-1.513 -7.21)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

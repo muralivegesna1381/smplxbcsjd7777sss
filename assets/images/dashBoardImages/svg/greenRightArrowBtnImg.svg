@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37" height="38" viewBox="0 0 37 38">
+  <defs>
+    <filter id="Bg" x="0" y="0" width="37" height="38" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#0c1523" flood-opacity="0.078"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Green_right_Arrow" transform="translate(-148 -348)">
+    <g transform="matrix(1, 0, 0, 1, 148, 348)" filter="url(#Bg)">
+      <g id="Bg-2" data-name="Bg" transform="translate(6 4)" fill="#cce8b0" stroke="#6bc100" stroke-miterlimit="10" stroke-width="1">
+        <rect width="25" height="26" rx="7" stroke="none"/>
+        <rect x="0.5" y="0.5" width="24" height="25" rx="6.5" fill="none"/>
+      </g>
+    </g>
+    <path id="Path_6505" data-name="Path 6505" d="M3170.208,1747.5h9.9" transform="translate(-3008.871 -1382.415)" fill="none" stroke="#6bc100" stroke-width="1"/>
+    <path id="Path_6506" data-name="Path 6506" d="M3180,1742.894l4.136,2.984-4.136,2.8" transform="translate(-3012.555 -1380.683)" fill="none" stroke="#6bc100" stroke-width="1"/>
+  </g>
+</svg>

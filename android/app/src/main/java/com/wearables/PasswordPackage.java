@@ -1,0 +1,37 @@
+package com.wearables;
+
+
+import com.facebook.react.ReactPackage;
+import com.facebook.react.bridge.JavaScriptModule;
+import com.facebook.react.bridge.NativeModule;
+import com.facebook.react.bridge.ReactApplicationContext;
+import com.facebook.react.uimanager.ViewManager;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class PasswordPackage implements ReactPackage {
+
+    @Override
+    public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List<NativeModule> createNativeModules(
+            ReactApplicationContext reactContext) {
+        List<NativeModule> modules = new ArrayList<>();
+        //We import the module file here
+        modules.add(new com.passwordenvryption.PasswordEncryption(reactContext));
+        modules.add(new com.videoCompression.VideoCompression(reactContext));
+        modules.add(new ChatbotBridgingManager(reactContext));
+
+        return modules;
+    }
+
+    // Backward compatibility
+    public List<Class<? extends JavaScriptModule>> createJSModules() {
+        return new ArrayList<>();
+    }
+}

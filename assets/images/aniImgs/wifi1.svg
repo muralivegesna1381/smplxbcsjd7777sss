@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="800" height="684" viewBox="0 0 800 684">
+  <defs>
+    <clipPath id="clip-wifi_1">
+      <rect width="800" height="684"/>
+    </clipPath>
+  </defs>
+  <g id="wifi_1" data-name="wifi – 1" clip-path="url(#clip-wifi_1)">
+    <rect width="800" height="684" fill="#fff"/>
+    <path id="Path_24" data-name="Path 24" d="M528.111,348.037a250.655,250.655,0,0,0-28.786,1.721A243.835,243.835,0,0,0,354.2,419.978,39.3,39.3,0,1,0,409.78,475.56a167.56,167.56,0,0,1,236.652,0,39.3,39.3,0,0,0,55.585-55.582A244.281,244.281,0,0,0,528.111,348.037Z" transform="translate(-129.53 -49.323)"/>
+    <path id="Subtraction_1" data-name="Subtraction 1" d="M103.422,206.848a103.115,103.115,0,1,1,38.918-7.572A103.094,103.094,0,0,1,103.422,206.848Zm-.3-138.9a35.172,35.172,0,1,0,24.872,10.3A34.95,34.95,0,0,0,103.118,67.944Z" transform="translate(297.284 447.426)"/>
+  </g>
+</svg>
