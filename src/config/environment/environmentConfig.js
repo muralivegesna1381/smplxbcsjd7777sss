@@ -1,17 +1,17 @@
 // @flow
 //import { getBundleId } from '../../utils/device.info';
 
-export const PROD = {
-    uri: "https://mobile.wearablesclinicaltrials.com/App/",
-    deviceConnectUrl: "prd.wearablesclinicaltrials.com",
-    isHPN1Bcon: false,
-  };
+// export const PROD = {
+//     uri: "https://mobile.wearablesclinicaltrials.com/App/",
+//     deviceConnectUrl: "prd.wearablesclinicaltrials.com",
+//     isHPN1Bcon: false,
+// };
   
-  export const DEV = {
-    uri: "https://mobile.uat.wearablesclinicaltrials.com/App/",
-    deviceConnectUrl: "tst.wearablesclinicaltrials.com",
-    isHPN1Bcon: false,
-  };
+//   export const DEV = {
+//     uri: "https://mobile.uat.wearablesclinicaltrials.com/App/",
+//     deviceConnectUrl: "tst.wearablesclinicaltrials.com",
+//     isHPN1Bcon: false,
+//   };
   
   //////////GCP UAT/////////////
   export const GCPDEV = {
@@ -43,12 +43,6 @@ export const PROD = {
     isHPN1Bcon: true,
   };
   
-  // export const GCPCLOUDUAT= {
-  //   uri: "https://wearables-mobileapp-webapis-uat-ygue7fpaba-uc.a.run.app/app/",
-  //   deviceConnectUrl: "tst.wearablesclinicaltrials.com",
-  //   isHPN1Bcon: true,
-  // };
-  
   /////Migrated Service////////
   export const GCPCLOUDQA= {
     uri: 'https://wms-qa-ygue7fpaba-uc.a.run.app/wearables_mobile_services/app/migrated/',//"https://wmsmig-qa-ygue7fpaba-uc.a.run.app/wearables_mobile_services/app/",
@@ -63,6 +57,12 @@ export const PROD = {
     isHPN1Bcon: true,
   };
 
+  export const GCPPROD = {
+    uri: "https://mobileservices.wearablesclinicaltrials.com/wearables_mobile_services/app/migrated/",
+    deviceConnectUrl: "prd.wearablesclinicaltrials.com",
+    isHPN1Bcon: true,
+};
+
   //const bundleId = 'PROD';// 'PROD'; //'DEV';//getBundleId();
   //const bundleId = 'DEV';
   //const bundleId = 'GCPDEV';
@@ -70,11 +70,14 @@ export const PROD = {
   //const bundleId = "GCPCLOUD";
   //const bundleId = "GCPCLOUDINTEST";
   // const bundleId = "GCPCLOUDQA";
-  const bundleId = "GCPCLOUDUAT";
-  
+  // const bundleId = "GCPCLOUDUAT";
+  const bundleId = 'GCPPROD';
+
   export let env = "";
   if (bundleId === "DEV") {
     env = "DEV";
+  }else if (bundleId === "GCPPROD") {
+    env = "GCPPROD";
   } else if (bundleId === "QA") {
     env = "QA";
   } else if (bundleId === "PREPROD") {
@@ -100,6 +103,7 @@ export const PROD = {
   const Base = {
     Environment: function() {
       if (env === "QA") return JSON.stringify(QA);
+      else if (env === "GCPPROD") return JSON.stringify(GCPPROD);
       else if (env === "DEV") return JSON.stringify(DEV);
       else if (env === "PREPROD") return JSON.stringify(PREPROD);
       else if (env === "PROD") return JSON.stringify(PROD);

@@ -499,7 +499,7 @@ const  ObsReviewComponent = ({navigation, route, ...props }) => {
 
         let behId = !selectedBehaviour.behaviorId ? 0 : parseInt(selectedBehaviour.behaviorId);
         let dte = moment(new Date()).format("YYYYMMDDHHmmss");
-        let filename = "Observations_Images/"+selectedPet.petID.toString() + behId.toString() + dte+"."+"jpg";
+        let filename = "Observation_Images/"+selectedPet.petID.toString() + behId.toString() + dte+"."+"jpg";
         let reference = storage().ref(filename); // 2
         let task = reference.putFile(imgObj.compressedFile); // 3
             task.on('state_changed', taskSnapshot => {

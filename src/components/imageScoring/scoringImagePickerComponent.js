@@ -7,7 +7,7 @@ import storage, { firebase } from '@react-native-firebase/storage';
 import * as internetCheck from "./../../utils/internetCheck/internetCheck";
 import moment from 'moment';
 import BuildEnvJAVA from './../../config/environment/enviJava.config';
-import MultipleImagePicker from '@baronha/react-native-multiple-image-picker';
+import MultipleImagePicker from '@ko-developerhong/react-native-multiple-image-picker';
 import * as firebaseHelper from './../../utils/firebase/firebaseHelper';
 import * as AuthoriseCheck from './../../utils/authorisedComponent/authorisedComponent';
 import perf from '@react-native-firebase/perf';
@@ -164,7 +164,7 @@ const ScoringImagePickerComponent = ({ navigation, route, ...props }) => {
             petObj = JSON.parse(petObj);
             firebaseHelper.logEvent(firebaseHelper.event_image_scoring_image_upload_api, firebaseHelper.screen_image_based_score_image_upload, "Image based scoring image upload Api", "");
             let dte = moment(new Date()).format("YYYYMMDDHHmmss");
-            let filename = "Wearables_Scoring_Images/" + petObj.petID.toString() + client.toString() + dte + "." + 'jpg';
+            let filename = "Image_based_Images/" + petObj.petID.toString() + client.toString() + dte + "." + 'jpg';
             let reference = storage().ref(filename); // 2
             let task = reference.putFile(fileUrl); // 3
             task.on('state_changed', taskSnapshot => {

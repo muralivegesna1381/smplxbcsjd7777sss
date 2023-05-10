@@ -5,6 +5,7 @@ import {heightPercentageToDP as hp, widthPercentageToDP as wp,} from "react-nati
 import HeaderComponent from '../../../utils/commonComponents/headerComponent';
 import fonts from '../../../utils/commonStyles/fonts'
 import CommonStyles from '../../../utils/commonStyles/commonStyles';
+import AlertComponent from '../../../utils/commonComponents/alertComponent';
 
 const  ApproxTimeUI = ({route, ...props }) => {
 
@@ -26,7 +27,15 @@ const  ApproxTimeUI = ({route, ...props }) => {
         set_selectedIndex(index);
         set_timeText(time);
 
-    }
+    };
+
+    const popOkBtnAction = () => {
+        props.popOkBtnAction();
+    };
+
+    const popUpLeftBtnAction = () => {
+        props.popUpLeftBtnAction();
+    };
 
     return (
         <View style={[CommonStyles.mainComponentStyle]}>
@@ -139,7 +148,20 @@ const  ApproxTimeUI = ({route, ...props }) => {
                     rightButtonAction = {async () => nextButtonAction()}
                     leftButtonAction = {async () => backBtnAction()}
                 />
-            </View>   
+            </View>  
+
+            {props.isPopup ? <View style={CommonStyles.customPopUpStyle}>
+                <AlertComponent
+                    header = {'Alert'}
+                    message={'In order to recieve timer notifications, Battery optimization must be dissbled. Please click on YES and search for Wearables app and then tap on toggle. Would like to proceed?'}
+                    isLeftBtnEnable = {true}
+                    isRightBtnEnable = {true}
+                    leftBtnTilte = {'NO'}
+                    rightBtnTilte = {'YES'}
+                    popUpRightBtnAction = {() => popOkBtnAction()}
+                    popUpLeftBtnAction = {() => popUpLeftBtnAction()}
+                />
+            </View> : null} 
 
          </View>
          

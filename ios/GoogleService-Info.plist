@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>725323713092-9smeq4fian673c5899ru5n3jn0cnighb.apps.googleusercontent.com</string>
+	<string>210927000769-ij74mmtkie4839l0fpoahrk52ldac8bl.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.725323713092-9smeq4fian673c5899ru5n3jn0cnighb</string>
+	<string>com.googleusercontent.apps.210927000769-ij74mmtkie4839l0fpoahrk52ldac8bl</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBRXzP_OVqlGREMaGdVCin0xGKzWjaOn9Y</string>
+	<string>AIzaSyDK8s-p0HNwVPmqqJulwucx090ZDeD4CP0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>725323713092</string>
+	<string>210927000769</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.ctepl.wearablesclinicaltrialsdev</string>
+	<string>com.HPN.wearablesclinicaltrials</string>
 	<key>PROJECT_ID</key>
-	<string>ct-wearables-portal-pf</string>
+	<string>ct-wearables-portal-prod</string>
 	<key>STORAGE_BUCKET</key>
-	<string>ct-wearables-portal-pf.appspot.com</string>
+	<string>ct-wearables-portal-prod.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:725323713092:ios:0155dca30b51d076a74a11</string>
+	<string>1:210927000769:ios:197d00ba7c80eada6fc840</string>
 </dict>
 </plist>

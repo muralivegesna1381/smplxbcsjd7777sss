@@ -74,9 +74,23 @@ const FindSensorComponent = ({navigation, route, ...props }) => {
           return true;
     };
 
+    const requestBLEPermissions = async () => {
+      //console.log("Condition works 2")
+      const res = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+      await PermissionsAndroid.requestMultiple([ PermissionsAndroid.PERMISSIONS.BLUETOOTH_SCAN, PermissionsAndroid.PERMISSIONS.BLUETOOTH_CONNECT])
+      console.log(res)
+    }
+
     const checkBleState = () => {
 
         if (Platform.OS === "android") {
+
+          if(Platform.Version>=31){
+            //console.log("Condition works")
+            requestBLEPermissions();
+
+          }
+
             if (Platform.Version >= 29) {
               PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
               ).then((result) => {

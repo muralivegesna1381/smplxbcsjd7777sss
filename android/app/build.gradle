@@ -98,7 +98,7 @@ def enableSeparateBuildPerCPUArchitecture = false
 /**
  * Run Proguard to shrink the Java bytecode in release builds.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = true
 
 /**
  * The preferred build flavor of JavaScriptCore.
@@ -136,14 +136,17 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    packagingOptions {
+        pickFirst '**/*.so'
+    }
 
     defaultConfig {
-        applicationId "com.ctepl.wearablesclinicaltrialsdev"
+        applicationId "com.cte.wearables"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         multiDexEnabled true
         aaptOptions { cruncherEnabled = false }
-        versionCode 5
+        versionCode 24
         versionName "2.0"
     }
     splits {

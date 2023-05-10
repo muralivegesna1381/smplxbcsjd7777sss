@@ -61,6 +61,7 @@
 		8B1C619FE74E4DE2B893EF3C /* Barlow-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 67651A7BC02B4D7B8F869D6E /* Barlow-Black.ttf */; };
 		8BE01122035741A3A13F4A33 /* Barlow-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78718EAB4464432DB060DC05 /* Barlow-LightItalic.ttf */; };
 		94CEC7EBF4C5401785911AB7 /* Barlow-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC4DD8611A6F47F387A87AB3 /* Barlow-Thin.ttf */; };
+		9A1B60732A0A8BBF001C62D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9A1B60722A0A8BBF001C62D9 /* GoogleService-Info.plist */; };
 		9D61E8E6C3BD47C8A1A428FE /* Poppins-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6B8C333FB2F743E7A206D5CE /* Poppins-Black.ttf */; };
 		A3A946CB4DA645B8ACD3D522 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB5BEFEFD6804D77A507BAA8 /* Poppins-Bold.ttf */; };
 		A644D0D4F3EE4E9EA250DCEF /* Poppins-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DD9BDA7E25743B0AE0A33E3 /* Poppins-ExtraBoldItalic.ttf */; };
@@ -78,7 +79,6 @@
 		FB47ED662770ED5700E06521 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = FB47ED612770ED5700E06521 /* GTMBase64.m */; };
 		FB47ED672770ED5700E06521 /* NSString+TripleDES.m in Sources */ = {isa = PBXBuildFile; fileRef = FB47ED632770ED5700E06521 /* NSString+TripleDES.m */; };
 		FB47ED682770ED5700E06521 /* EncryptPassword.m in Sources */ = {isa = PBXBuildFile; fileRef = FB47ED642770ED5700E06521 /* EncryptPassword.m */; };
-		FB6B122F281B0E4600884870 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FB6B122E281B0E4600884870 /* GoogleService-Info.plist */; };
 		FB7B99D427CD2CBF00B8AAE7 /* RNThumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = FB7B99D227CD2CBF00B8AAE7 /* RNThumbnail.m */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +155,7 @@
 		8DD9BDA7E25743B0AE0A33E3 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraBoldItalic.ttf"; path = "../assets/fonts/Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		9252F49433C34087BEFA8620 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../assets/fonts/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		99A05D50F8354ED3B4C4CFD7 /* Barlow-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Barlow-Bold.ttf"; path = "../assets/fonts/Barlow-Bold.ttf"; sourceTree = "<group>"; };
+		9A1B60722A0A8BBF001C62D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9F97FE06375F4C558CB7A0BE /* Poppins-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-BlackItalic.ttf"; path = "../assets/fonts/Poppins-BlackItalic.ttf"; sourceTree = "<group>"; };
 		A41E151EFE934C1181FA9ED2 /* Barlow-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Barlow-Medium.ttf"; path = "../assets/fonts/Barlow-Medium.ttf"; sourceTree = "<group>"; };
 		AB0BAD2986994887902291BF /* Poppins-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-LightItalic.ttf"; path = "../assets/fonts/Poppins-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -179,7 +180,6 @@
 		FB47ED692770ED8200E06521 /* GTMDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		FB5BEFEFD6804D77A507BAA8 /* Poppins-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Bold.ttf"; path = "../assets/fonts/Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		FB5C4CEF27C1452E000BA5AD /* Wearables.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Wearables.entitlements; path = Wearables/Wearables.entitlements; sourceTree = "<group>"; };
-		FB6B122E281B0E4600884870 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FB7B99D227CD2CBF00B8AAE7 /* RNThumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNThumbnail.m; sourceTree = "<group>"; };
 		FB7B99D327CD2CBF00B8AAE7 /* RNThumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNThumbnail.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -332,7 +332,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				FB6B122E281B0E4600884870 /* GoogleService-Info.plist */,
+				9A1B60722A0A8BBF001C62D9 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* Wearables */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* WearablesTests */,
@@ -487,6 +487,7 @@
 				E92486B1EFC94B338E8B899C /* Barlow-MediumItalic.ttf in Resources */,
 				1BF3F9B12C094BA9B85D04B3 /* Barlow-Regular.ttf in Resources */,
 				B8EB1EA14B8A44C39F892D8C /* Barlow-SemiBold.ttf in Resources */,
+				9A1B60732A0A8BBF001C62D9 /* GoogleService-Info.plist in Resources */,
 				46526AF25BFC4CD88CDF0DB9 /* Barlow-SemiBoldItalic.ttf in Resources */,
 				94CEC7EBF4C5401785911AB7 /* Barlow-Thin.ttf in Resources */,
 				2CC5A512E8AC421ABDBDE663 /* Barlow-ThinItalic.ttf in Resources */,
@@ -496,7 +497,6 @@
 				16D91817DF1241238C5F9DA0 /* Poppins-BoldItalic.ttf in Resources */,
 				7757672B34DD4EF099C0DF59 /* Poppins-ExtraBold.ttf in Resources */,
 				A644D0D4F3EE4E9EA250DCEF /* Poppins-ExtraBoldItalic.ttf in Resources */,
-				FB6B122F281B0E4600884870 /* GoogleService-Info.plist in Resources */,
 				5866980C7A28478197491CF5 /* Poppins-ExtraLight.ttf in Resources */,
 				CF299DC74CB540DE835AAD15 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				396F2E1BC5DD48B8B041D36D /* Poppins-Italic.ttf in Resources */,
@@ -671,7 +671,7 @@
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -809,17 +809,21 @@
 			baseConfigurationReference = F173630C47AA4308921659A5 /* Pods-Wearables.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"ASSETCATALOG_COMPILER_APPICON_NAME[sdk=iphoneos*]" = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Wearables/Wearables.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = GUTBJ785HC;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GUTBJ785HC;
 				ENABLE_BITCODE = NO;
 				GCC_NO_COMMON_BLOCKS = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Wearables/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -830,13 +834,17 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ctepl.wearablesclinicaltrialsdev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HPN.wearablesclinicaltrials;
 				PRODUCT_NAME = Wearables;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Wearables_AppStore_Profile;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wearables-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -846,17 +854,20 @@
 			baseConfigurationReference = 8DBF391509C10AE0AD265BD1 /* Pods-Wearables.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Wearables/Wearables.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
-				DEVELOPMENT_TEAM = GUTBJ785HC;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = GUTBJ785HC;
 				ENABLE_BITCODE = NO;
 				GCC_NO_COMMON_BLOCKS = NO;
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Wearables/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -867,12 +878,16 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ctepl.wearablesclinicaltrialsdev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.HPN.wearablesclinicaltrials;
 				PRODUCT_NAME = Wearables;
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = Wearables_AppStore_Profile;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wearables-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

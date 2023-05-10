@@ -48,7 +48,7 @@ const TimerActivityComponent = ({navigation, route, ...props }) => {
     }, [route.params?.timerPet,route.params?.fromScreen]);
   
     const handleBackButtonClick = () => {
-        navigateToPrevious();
+        // navigateToPrevious();
         return true;
     };
 

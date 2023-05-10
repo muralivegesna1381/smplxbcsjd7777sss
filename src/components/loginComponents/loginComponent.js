@@ -79,6 +79,7 @@ const LoginComponent = ({ navigation, route, ...props }) => {
   */
   useEffect(() => {
 
+    console.log('Login ', loginData)
     if (loginData) {
       stopFBTraceLogin();
       if (loginData.login.success && loginData.login.result) {
@@ -112,6 +113,7 @@ const LoginComponent = ({ navigation, route, ...props }) => {
   // Getting the user details in responce
   useEffect(() => {
 
+    console.log('userDetailsData ', userDetailsData)
     if (userDetailsData) {
       stopFBTraceUserDetails();
       saveUserDetails(userDetailsData.ClientInfo.result);
@@ -169,6 +171,7 @@ const LoginComponent = ({ navigation, route, ...props }) => {
     set_isLoading(true);
     isLoadingdRef.current = 1;
     
+    console.log('getLoginPets ', EnvironmentJava.uri + "getPetDevicesByPetParent/" + client)
     fetch(EnvironmentJava.uri + "getPetDevicesByPetParent/" + client,
       {
         method: "GET",
@@ -179,7 +182,7 @@ const LoginComponent = ({ navigation, route, ...props }) => {
         },
       }
     ).then((response) => response.json()).then(async (data) => {
-
+      console.log('getLoginPets ', getLoginPets)
       set_isLoading(false);
       isLoadingdRef.current = 0;
       stopFBTraceGetPets();

@@ -9,6 +9,7 @@ import moment from "moment";
 import Highlighter from "react-native-highlight-words";
 import * as DataStorageLocal from './../../../utils/storage/dataStorageLocal';
 import * as firebaseHelper from './../../../utils/firebase/firebaseHelper';
+import ReactNativeAN from 'react-native-alarm-notification';
 
 var PushNotification = require("react-native-push-notification");
 
@@ -47,9 +48,11 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
     const [popId, set_popId] = useState(undefined);
     const [isPopupShown, set_isPopupShown] = useState(false);
 
-
     const pauseFirstTimerIntervalId = useRef(null);
     const pauseSecondTimerIntervalId = useRef(null);
+    const dismisspauseFirstTimerIntervalId = useRef(null);
+    const dismisIncreaseTimerIntervalId = useRef(null);
+
     const clearPauseFirstTimer = useRef(null);
     const clearPauseSecondTimer = useRef(null);
     const isResumeTimerCancelled = useRef(false);
@@ -60,6 +63,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
     useEffect(() => {     
         if(data && data.data.__typename === 'TimerWidgetQuery'){
             getTimerVisibility();
+            console.log('Timer Widet ',data);
         }        
     }, [data]);
 
@@ -76,27 +80,33 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
     
       }, [timerDetailsData, timerDetailsError, timerDetailsLoading]);
 
-      const getTimerVisibility = async () => {
+    const getTimerVisibility = async () => {
             
         let timerObj = await DataStorageLocal.getDataFromAsync(Constant.TIMER_OBJECT);
         timerObj = JSON.parse(timerObj);
+
         if(timerObj && data && data.data.screenName==='Dashboard'){   
             
                 set_petName(timerObj.timerPetName);
                 set_activityText(timerObj.activityText);
                 refferTimer.current = 0;
+                console.log('timerObj Widget ',timerObj)
                 if(timerObj.isTimerStarted){
+
+                    setTimeout(() => {  
+                        reCreateActualTimerNotification();
+                    }, 2000)
+
                     set_isTimerStarted(timerObj.isTimerStarted);
                     set_isTimerPaused(timerObj.isTimerPaused);
                     set_startDate(new Date(timerObj.startDate));
                     onButtonStart(new Date(timerObj.startDate));
                     set_isTimerVisible(true);
-                    setTimeout(() => {  
-                        reCreateActualTimerNotification();
-                    }, 2000)
+                    
                 }
 
                 if(timerObj.isTimerPaused){
+
                     set_isTimerStarted(timerObj.isTimerStarted);
                     set_isTimerPaused(timerObj.isTimerPaused);
                     set_startDate(new Date(timerObj.startDate));
@@ -132,7 +142,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
             saveTimerWhenNavigates();
         }
 
-      }
+    }
 
       const saveTimerWhenNavigates = async () => {
         let timerData = await DataStorageLocal.getDataFromAsync(Constant.TIMER_OBJECT);
@@ -149,7 +159,8 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
                 timerData.duration,
                 timerData.actualDuration,
                 timerData.resumeTime,
-                timerData.milsSecs
+                timerData.milsSecs,
+                timerData.isTimerIncreaseDone
                 );
         }
         // clearInterval(widgetTimer);
@@ -186,6 +197,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
     };
 
     const autoStopTimer = async (msec) => {
+
             let timerData = await DataStorageLocal.getDataFromAsync(Constant.TIMER_OBJECT);
             timerData = JSON.parse(timerData);
 
@@ -196,7 +208,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
             let high = <Highlighter highlightStyle={{ fontWeight: "bold",}}
               searchWords={["Menu > Timer > Timer Logs"]}
               textToHighlight={"The Timer has ended. You can access the record under Menu > Timer > Timer Logs"}/>
-            createPopup('NO', false, 'OK', 'Thank You!', high, TIMER_ENDED);
+            createPopup('NO', false, 'OK', 'Thank You!', high, TIMER_ENDED,true);
 
             let diff = approx - timerData.milsSecs;
             let seconds = (Math.floor((diff / 1000) % 60)).toString();
@@ -212,12 +224,12 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
         }
 
         // if(ms > (approx-15000) && ms < approx){
-        if(ms > (approx-120000) && ms < approx){
+        if(ms > (approx-120000) && ms < approx && !timerData.isTimerIncreaseDone){
             if(refferTimer.current === 0){
                 refferTimer.current = 1;
                 set_isPopupShown(1);
                 if(!isResumeTimerCancelled.current){
-                    createPopup('NO', true, 'YES', 'Alert', 'Do you wish to increase the timer duration by '+ timerData.actualDuration +' more minutes? Select Yes to continue and No to cancel.', TIMER_INCREASE);
+                    createPopup('NO', true, 'YES', 'Alert', 'Do you wish to increase the timer duration by '+ timerData.actualDuration +' more minutes? Select Yes to continue and No to cancel.', TIMER_INCREASE,true);
                 }
                 dismissIncreasePopup();
             }
@@ -227,13 +239,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
 
     const stopBtnAction = () => {
         firebaseHelper.logEvent(firebaseHelper.event_timer_widget_stop_action, firebaseHelper.screen_timer_widget, "User clicked on Stop button", "");
-        set_isPopLftbtn(true);
-        set_popRightBtnTitle('YES');
-        set_poplftBtnTitle('NO');
-        set_popAlert('Alert');
-        set_popUpMessage('Are you sure, want to stop timer?');
-        set_popId(TIMER_STOP);
-        set_isPopUp(true);
+        createPopup('NO', true, 'YES', Constant.ALERT_DEFAULT_TITLE, 'Are you sure, want to stop timer?', TIMER_STOP,true);
     };
 
     const pauseBtnAction = async (value) => {
@@ -274,8 +280,9 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
                 durationObj.duration,
                 durationObj.actualDuration,
                 durationObj.resumeTime,
-                durationObj.milsSecs+timeDiff
-                );
+                durationObj.milsSecs+timeDiff,
+                durationObj.isTimerIncreaseDone
+            );
              
         }else {
 
@@ -297,10 +304,12 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
                 durationObj.duration,
                 durationObj.actualDuration,
                 new Date(),
-                durationObj.milsSecs
+                durationObj.milsSecs,
+                durationObj.isTimerIncreaseDone
             );
 
             reCreateActualTimerNotification();
+            await DataStorageLocal.removeDataFromAsync(Constant.TIMER_OBJECT_PAUSE_NOTIFICATIONS);
             onButtonStart(new Date(dateDiff1));
         
         }
@@ -318,7 +327,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
 
     };
 
-    const saveTimerDataAsync = async (sDate,pDate,isTStarted,isTPaused,timerPetId,petName,activityText,duration,actualDuration,resumeTime,milsSecs) => {
+    const saveTimerDataAsync = async (sDate,pDate,isTStarted,isTPaused,timerPetId,petName,activityText,duration,actualDuration,resumeTime,milsSecs,isTimerIncrease) => {
 
         let asyncJson= {
             startDate : sDate,
@@ -331,7 +340,8 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
             duration : duration,
             actualDuration : actualDuration,
             resumeTime : resumeTime,
-            milsSecs : milsSecs
+            milsSecs : milsSecs,
+            isTimerIncreaseDone : isTimerIncrease
         }
         await DataStorageLocal.saveDataToAsync(Constant.TIMER_OBJECT,JSON.stringify(asyncJson));
 
@@ -343,6 +353,8 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
         let clientId = await DataStorageLocal.getDataFromAsync(Constant.CLIENT_ID);
         let timerData = await DataStorageLocal.getDataFromAsync(Constant.TIMER_OBJECT);
         let timerPetObj = await DataStorageLocal.getDataFromAsync(Constant.TIMER_SELECTED_PET);
+        let token = await DataStorageLocal.getDataFromAsync(Constant.APP_TOKEN);
+
         timerData = JSON.parse(timerData);
         timerPetObj = JSON.parse(timerPetObj);
         
@@ -358,7 +370,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
           };
         
         if(status==='stop'){
-            saveTimerDataAsync('','',false,false,'','','','','','',0);
+            saveTimerDataAsync('','',false,false,'','','','','','',0,false);
         }
         firebaseHelper.logEvent(firebaseHelper.event_timer_Widget_api, firebaseHelper.screen_timer_widget, "Timer Api in Widget initiated", "Pet Id : "+timerPetObj.petID);
         await updateTimerDetails({ variables: { input: json } });
@@ -382,7 +394,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
         if(!isPause){
             sendTimerDataToBAckend('stop',elapsed);           
         } else {
-            saveTimerDataAsync('','',false,false,'','','','','','',0);
+            saveTimerDataAsync('','',false,false,'','','','','','',0,false);
         }    
 
     };
@@ -403,10 +415,12 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
         // dateSecond.setMilliseconds(dateSecond.getMilliseconds() + ((Number(120)*1000)));
 
         var minutesToAdd=5;
+        // var minutesToAdd=1;
         var currentDate = new Date();
         var futureDateFirst = new Date(currentDate.getTime() + minutesToAdd*60000);
 
         var minutesToAddSecond=10;
+        // var minutesToAddSecond=2;
         var currentDateSecond = new Date();
         var futureDateSecond = new Date(currentDateSecond.getTime() + minutesToAddSecond*60000);
 
@@ -419,14 +433,14 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
         await DataStorageLocal.saveDataToAsync(Constant.TIMER_OBJECT_PAUSE_NOTIFICATIONS,JSON.stringify(storedObjTimer));
 
         clearPausenotifications();
-        pausePushNotifications(dateFirst,"The timer is currently paused. Do you wish to resume it?");
-        pausePushNotifications(dateSecond,"The timer is currently paused. Do you wish to resume it?");
+        createPushNotifications(dateFirst,"The timer is currently paused. Do you wish to resume it?");
+        createPushNotifications(dateSecond,"The timer is currently paused. Do you wish to resume it?");
         firstPauseNotification(300000);
         secondPauseNotification(600000);
-        // pausePushNotifications(dateFirst,"The timer is currently paused. Do you wish to resume it?");
-        // pausePushNotifications(dateSecond,"The timer is currently paused. Do you wish to resume it?");
+        // createPushNotifications(dateFirst,"The timer is currently paused. Do you wish to resume it?");
+        // createPushNotifications(dateSecond,"The timer is currently paused. Do you wish to resume it?");
         // firstPauseNotification(60000);
-        // secondPauseNotification(240000);
+        // secondPauseNotification(120000);
 
         // clearPauseFirstNotification(295000);
         sendTimerDataToBAckend('pause',elapsed);
@@ -449,29 +463,44 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
             if(milliSecs < approx){
                 let dateFirst = new Date();
                 dateFirst.setMilliseconds(dateFirst.getMilliseconds() + (Number(approx-milliSecs)));
-                pausePushNotifications(dateFirst,'Your timer is about to elapse. Please click this notifications to take action.');
+                createPushNotifications(dateFirst,'Your timer is about to elapse. Please click this notifications to take action.');
             }
         }            
 
     };
 
      /**
-    * Here we create First Pause Local notification for iOS and Android
+    * Here we create First Local notification for iOS and Android
     */
-      const pausePushNotifications = (date,msg) => {
+      const createPushNotifications = async (date,msg) => {
  
         PushNotification.localNotificationSchedule({
             channelId: "Wearables_Mobile_Android", 
             title: "Wearables",
             message: msg, // (required)
             date: date,//new Date(Date.now() + 10 * 1000), // in 60 secs
-            allowWhileIdle: false, // (optional) set notification to work while on doze, default: false
+            allowWhileIdle: true, // (optional) set notification to work while on doze, default: false
             //timeoutAfter:120000,  
             ignoreInForeground:true, 
           
         });
+
+        // const alarmNotifData = {
+        //     title: "My Notification Title",
+        //     message: "My Notification Message",
+        //     channel: "Wearables_Mobile_Android",
+        //     small_icon: "ic_launcher",
+        // };
+
+        // const alarm = await ReactNativeAN.scheduleAlarm({ ...alarmNotifData, fire_date: '27-04-2023 15:40:00' });
+
     
       };
+
+      const androidLocalNotification = () => {
+
+       
+      }
    
       /**
       * Here we create First Pause custom Alert iOS and Android
@@ -480,8 +509,8 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
     const firstPauseNotification = (num) => {   
    
            let pauseTimerFirst = setTimeout(async () => {  
-            await pauseNoAction();
-            createPopup('NO', true, 'YES', 'Alert', 'The timer is currently paused. Do you wish to resume it?', TIMER_RESUME_FIRST);
+            // await pauseNoAction();
+            createPopup('NO', true, 'YES', 'Alert', 'The timer is currently paused. Do you wish to resume it?', TIMER_RESUME_FIRST,true);
             dismissFirstPausePopup('first');
            }, num)
    
@@ -496,8 +525,8 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
     const secondPauseNotification = (num) => {
    
            let pauseTimerSecond = setTimeout(async () => {  
-            await pauseNoAction();
-            createPopup('NO', true, 'YES', 'Alert', 'The timer is currently paused. Do you wish to resume it?', TIMER_RESUME_SECOND);
+            // await pauseNoAction();
+            createPopup('NO', true, 'YES', 'Alert', 'The timer is currently paused. Do you wish to resume it?', TIMER_RESUME_SECOND,true);
             dismissFirstPausePopup('second');
 
            }, num)
@@ -508,13 +537,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
     const dismissFirstPausePopup = (value) => {
    
         let pauseTimerSecond = setTimeout(async () => {  
-            set_isPopLftbtn(false);
-            set_popRightBtnTitle(undefined);
-            set_poplftBtnTitle(undefined);
-            set_popAlert(undefined);
-            set_popUpMessage(undefined);
-            set_popId(undefined);
-            set_isPopUp(false);
+            createPopup('', false, '', '', '', undefined,false);
             if(value==='second'){
 
                 let high = <Highlighter highlightStyle={{ fontWeight: "bold",}}
@@ -523,28 +546,26 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
                     "You can access the record under Menu > Timer > Timer Logs"
                   }
                 />
-                createPopup('NO', false, 'OK', 'Thank You!', high, TIMER_ENDED);
+                createPopup('NO', false, 'OK', 'Thank You!', high, TIMER_ENDED,true);
             }
 
         }, 60000)
+    // }, 30000)
 
-        pauseSecondTimerIntervalId.current = pauseTimerSecond;
+        dismisspauseFirstTimerIntervalId.current = pauseTimerSecond;
     };
 
     const dismissIncreasePopup = (value) => {
    
-        let pauseTimerSecond = setTimeout(async () => {  
-            set_isPopLftbtn(false);
-            set_popRightBtnTitle(undefined);
-            set_poplftBtnTitle(undefined);
-            set_popAlert(undefined);
-            set_popUpMessage(undefined);
-            set_popId(undefined);
-            set_isPopUp(false);
-
+        let pauseTimerIncrease = setTimeout(async () => {  
+            createPopup('', false, '', '', '', undefined,false);
+            let timerData = await DataStorageLocal.getDataFromAsync(Constant.TIMER_OBJECT);
+            timerData = JSON.parse(timerData);
+            saveTimerDataAsync(timerData.startDate,timerData.pauseDate,timerData.isTimerStarted,timerData.isTimerPaused,timerData.timerPetId,timerData.timerPetName,timerData.activityText,timerData.duration,timerData.actualDuration,timerData.resumeTime,timerData.milsSecs,true); 
         }, 60000)
+    // }, 30000)
 
-        pauseSecondTimerIntervalId.current = pauseTimerSecond;
+        dismisIncreaseTimerIntervalId.current = pauseTimerIncrease;
     };
 
     const clearPauseFirstNotification = (num) => {   
@@ -554,7 +575,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
             PushNotification.cancelAllLocalNotifications();
             let dateSecond = new Date();
             dateSecond.setMilliseconds(dateSecond.getMilliseconds() + ((Number(600)*1000)));
-            pausePushNotifications(dateSecond,"The timer is currently paused. Do you wish to resume it?");
+            createPushNotifications(dateSecond,"The timer is currently paused. Do you wish to resume it?");
             // clearPauseSecondNotification(295000);
             if(clearPauseFirstTimer.current){
                 clearTimeout(clearPauseFirstTimer.current);
@@ -587,7 +608,8 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
    
            let durationObj = await DataStorageLocal.getDataFromAsync(Constant.TIMER_OBJECT_PAUSE_NOTIFICATIONS);
            durationObj = JSON.parse(durationObj);
-      
+      console.log('Reopen Pause notifications ',durationObj);
+
            if(durationObj){
    
                let isFirstDone = durationObj.isFirstDone;
@@ -596,7 +618,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
                let futureDateFirst = new Date(durationObj.pauseTimeFirst);
                let futureDateSecond = new Date(durationObj.pauseTimeSecond);
 
-               var minutesToAdd=1;
+               var minutesToAdd = 1;
                var currentDate = futureDateFirst;
                var futureDateFirstExt = new Date(currentDate.getTime() + minutesToAdd*60000);
 
@@ -637,7 +659,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
                                 "You can access the record under Menu > Timer > Timer Logs"
                             }
                         />
-                        createPopup('NO', false, 'OK', 'Thank You!', high, TIMER_ENDED);
+                        createPopup('NO', false, 'OK', 'Thank You!', high, TIMER_ENDED,true);
     
                     }
 
@@ -703,13 +725,14 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
                 duration,
                 timerData.actualDuration,
                 timerData.resumeTime,
-                timerData.milsSecs
+                timerData.milsSecs,
+                false
             );
 
             reCreateActualTimerNotification();
             
         } else {
-            createPopup('NO', false, 'OK', 'Sorry!', 'Timer has already ended.', TIMER_ENDED_ALREADY);
+            createPopup('NO', false, 'OK', 'Sorry!', 'Timer has already ended.', TIMER_ENDED_ALREADY,true);
         }
 
     };
@@ -717,48 +740,49 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
     const resumeTimer = async () => {
 
         pauseBtnAction(false);
-        
+
     }
 
-    const clearPausenotifications = () => {
+    const clearPausenotifications = async () => {
 
         if(pauseFirstTimerIntervalId.current){
-          clearTimeout(pauseFirstTimerIntervalId.current);
-    
+            clearTimeout(pauseFirstTimerIntervalId.current); 
         }
         if(pauseSecondTimerIntervalId.current){
-          clearTimeout(pauseSecondTimerIntervalId.current);
-    
+            clearTimeout(pauseSecondTimerIntervalId.current); 
+        }
+        if(dismisspauseFirstTimerIntervalId.current) {
+            clearTimeout(dismisspauseFirstTimerIntervalId.current); 
+        }
+
+        if(dismisIncreaseTimerIntervalId.current) {
+            clearTimeout(dismisIncreaseTimerIntervalId.current); 
         }
         PushNotification.cancelAllLocalNotifications();
-    
     };
 
     const pauseNoAction = async () => {
 
-            let storedObj = await DataStorageLocal.getDataFromAsync(Constant.TIMER_OBJECT_PAUSE_NOTIFICATIONS);
-            storedObj = JSON.parse(storedObj);
-            let storedObjTimer = {};
+        let storedObj = await DataStorageLocal.getDataFromAsync(Constant.TIMER_OBJECT_PAUSE_NOTIFICATIONS);
+        storedObj = JSON.parse(storedObj);
+        let storedObjTimer = {};
+console.log('Auto Dismissel ',storedObj);
+        if(!storedObj.isFirstDone) {
 
-            if(!storedObj.isFirstDone) {
-
-                    storedObjTimer.pauseTimeFirst= storedObj.pauseTimeFirst;
-                    storedObjTimer.pauseTimeSecond= storedObj.pauseTimeSecond;
-                    storedObjTimer.isFirstDone=true;
-                    storedObjTimer.isSecondDone=false;
-
-            } else if(!storedObj.isSecondDone) {
-
-                storedObjTimer.pauseTimeFirst= storedObj.pauseTimeFirst;
-                storedObjTimer.pauseTimeSecond= storedObj.pauseTimeSecond;
-                storedObjTimer.isFirstDone=true;
-                storedObjTimer.isSecondDone=true;
-
-            } else {
-
-            }
-
+            storedObjTimer.pauseTimeFirst= storedObj.pauseTimeFirst;
+            storedObjTimer.pauseTimeSecond= storedObj.pauseTimeSecond;
+            storedObjTimer.isFirstDone=true;
+            storedObjTimer.isSecondDone=false;
             await DataStorageLocal.saveDataToAsync(Constant.TIMER_OBJECT_PAUSE_NOTIFICATIONS,JSON.stringify(storedObjTimer));
+        } else if(!storedObj.isSecondDone) {
+
+            storedObjTimer.pauseTimeFirst= storedObj.pauseTimeFirst;
+            storedObjTimer.pauseTimeSecond= storedObj.pauseTimeSecond;
+            storedObjTimer.isFirstDone=true;
+            storedObjTimer.isSecondDone=true;
+            await DataStorageLocal.removeDataFromAsync(Constant.TIMER_OBJECT_PAUSE_NOTIFICATIONS);
+        } 
+            
     };
 
     const reCreatePauseNotifications = async (fPTime,sPTIme,value) => {
@@ -769,21 +793,21 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
         if(value==='firstPause') {
 
             dateFirst.setMilliseconds(dateFirst.getMilliseconds() + (Number(fPTime)));
-            pausePushNotifications(dateFirst,"The timer is currently paused. Do you wish to resume it?");   
+            createPushNotifications(dateFirst,"The timer is currently paused. Do you wish to resume it?");   
             
             dateFirst.setMilliseconds(dateFirst.getMilliseconds() + (Number(sPTIme)));
-            pausePushNotifications(dateFirst,"The timer is currently paused. Do you wish to resume it?"); 
+            createPushNotifications(dateFirst,"The timer is currently paused. Do you wish to resume it?"); 
 
         } if(value==='secondPause') {
 
             dateFirst.setMilliseconds(dateFirst.getMilliseconds() + (Number(sPTIme)));
-            pausePushNotifications(dateFirst,"The timer is currently paused. Do you wish to resume it?"); 
+            createPushNotifications(dateFirst,"The timer is currently paused. Do you wish to resume it?"); 
             
         }
 
     };
 
-    const createPopup = (lftBtnTitle, lftBtnEnable, rgtBtnTitle, title, message, popIdValue) => {
+    const createPopup = (lftBtnTitle, lftBtnEnable, rgtBtnTitle, title, message, popIdValue,isPop) => {
 
         set_isPopLftbtn(lftBtnEnable);
         set_popRightBtnTitle(rgtBtnTitle);
@@ -791,7 +815,7 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
         set_popAlert(title);
         set_popUpMessage(message);
         set_popId(popIdValue);
-        set_isPopUp(true);
+        set_isPopUp(isPop);
 
     };
 
@@ -800,35 +824,23 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
         if(popId === TIMER_RESUME_FIRST){
 
             resumeTimer();
-            popCancelBtnAction(); 
+            createPopup('', false, '', '', '', undefined,false); 
 
         } else if(popId === TIMER_RESUME_SECOND){
 
             resumeTimer();
-            set_isPopLftbtn(false);
-            set_popRightBtnTitle(undefined);
-            set_poplftBtnTitle(undefined);
-            set_popAlert(undefined);
-            set_popUpMessage(undefined);
-            set_popId(undefined);
-            set_isPopUp(false);
+            createPopup('', false, '', '', '', undefined,false);
             
         } else if(popId === TIMER_STOP){
             firebaseHelper.logEvent(firebaseHelper.event_timer_widget_stop_confirm_action, firebaseHelper.screen_timer_widget, "User clicked on Stop button", "Timer Stopped");
             saveTimerData();
-            set_isPopLftbtn(false);
-            set_popRightBtnTitle(undefined);
-            set_poplftBtnTitle(undefined);
-            set_popAlert(undefined);
-            set_popUpMessage(undefined);
-            set_popId(undefined);
-            set_isPopUp(false);
+            createPopup('', false, '', '', '', undefined,false);
             let high = <Highlighter 
                 highlightStyle={{ fontWeight: "bold",}}
                 searchWords={["Menu > Timer > Timer Logs"]}
                 textToHighlight={"You can access the record under Menu > Timer > Timer Logs"}
             />
-            createPopup('NO', false, 'OK', 'Thank You!', high, TIMER_ENDED);
+            createPopup('NO', false, 'OK', 'Thank You!', high, TIMER_ENDED,true);
             
         } else if(popId === TIMER_ENDED){
 
@@ -838,24 +850,18 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
 
         } else if(popId === TIMER_ENDED_ALREADY){
 
-            set_isPopLftbtn(false);
-            set_popRightBtnTitle(undefined);
-            set_poplftBtnTitle(undefined);
-            set_popAlert(undefined);
-            set_popUpMessage(undefined);
-            set_popId(undefined);
-            set_isPopUp(false);
+            createPopup('', false, '', '', '', undefined,false);
             let high = <Highlighter highlightStyle={{ fontWeight: "bold",}}
               searchWords={["Menu > Timer > Timer Logs"]}
               textToHighlight={ "You can access the record under Menu > Timer > Timer Logs"}
             />
-            createPopup('NO', false, 'OK', 'Thank You!',high, TIMER_ENDED);
+            createPopup('NO', false, 'OK', 'Thank You!',high, TIMER_ENDED,true);
             
         }else if(popId === TIMER_INCREASE){
 
             increaseTimer();
             isResumeTimerCancelled.current = false;
-            popCancelBtnAction(); 
+            createPopup('', false, '', '', '', undefined,false);
             
         } else {
 
@@ -867,13 +873,28 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
 
     const popCancelBtnAction = async () => {
 
-        set_isPopLftbtn(false);
-        set_popRightBtnTitle(undefined);
-        set_poplftBtnTitle(undefined);
-        set_popAlert(undefined);
-        set_popUpMessage(undefined);
-        set_popId(undefined);
-        set_isPopUp(false);
+        if(popId === TIMER_INCREASE){
+            let timerData = await DataStorageLocal.getDataFromAsync(Constant.TIMER_OBJECT);
+            timerData = JSON.parse(timerData);
+            saveTimerDataAsync(timerData.startDate,timerData.pauseDate,timerData.isTimerStarted,timerData.isTimerPaused,timerData.timerPetId,timerData.timerPetName,timerData.activityText,timerData.duration,timerData.actualDuration,timerData.resumeTime,timerData.milsSecs,true);                       
+        } 
+
+        if(popId === TIMER_RESUME_FIRST){
+
+            let storedObj = await DataStorageLocal.getDataFromAsync(Constant.TIMER_OBJECT_PAUSE_NOTIFICATIONS);
+            storedObj = JSON.parse(storedObj);
+            let storedObjTimer = {};
+            if(storedObj) {
+                storedObjTimer.pauseTimeFirst= storedObj.pauseTimeFirst;
+                storedObjTimer.pauseTimeSecond= storedObj.pauseTimeSecond;
+                storedObjTimer.isFirstDone=true;
+                storedObjTimer.isSecondDone=storedObj.isSecondDone;
+                await DataStorageLocal.saveDataToAsync(Constant.TIMER_OBJECT_PAUSE_NOTIFICATIONS,JSON.stringify(storedObjTimer));
+            }
+
+        } 
+
+        createPopup('', false, '', '', '', undefined,false);
 
         // if(popId === TIMER_INCREASE){
         //     isResumeTimerCancelled.current = true;
@@ -882,11 +903,12 @@ const TimerWidgetComponent = ({navigation,route, ...props }) => {
         if(popId === TIMER_RESUME_SECOND){
 
             clearTimer('00:00:00',true);
+            await DataStorageLocal.removeDataFromAsync(Constant.TIMER_OBJECT_PAUSE_NOTIFICATIONS);
             let high = <Highlighter highlightStyle={{ fontWeight: "bold",}}
               searchWords={["Menu > Timer > Timer Logs"]}
               textToHighlight={"You can access the record under Menu > Timer > Timer Logs"}
             />
-            createPopup('NO', false, 'OK', 'Thank You!', high, TIMER_ENDED);
+            createPopup('NO', false, 'OK', 'Thank You!', high, TIMER_ENDED,true);
                 
         }  
 

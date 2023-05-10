@@ -347,9 +347,8 @@ const VideoUploadComponent = ({navigation, route,...props }) => {
 
         let behId = !obsData[0].behaviorId ? 0 : parseInt(obsData[0].behaviorId);
         let dte = moment(new Date()).format("YYYYMMDDHHmmss");
-        let filename = "Observations_Images/"+obsData[0].petId.toString() + behId.toString() + dte+obsData[0].photos[fbImageLength.current].fileName.replace('/r','/')+"."+"jpg";
+        let filename = "Observation_Images/"+obsData[0].petId.toString() + behId.toString() + dte+obsData[0].photos[fbImageLength.current].fileName.replace('/r','/');
         let reference = storage().ref(filename);
-
         let task = reference.putFile(fileUrl);
             task.on('state_changed', taskSnapshot => {
                 Apolloclient.client.writeQuery({query: Queries.UPLOAD_VIDEO_BACKGROUND_STATUS,data: {data: {observationName:obsData[0].obsText, statusUpload:'Uploading Image ',fileName:obsData[0].photos[fbImageLength.current].fileName.replace('/r','/').slice(0, 10)+"...", uploadProgress:(Math.round(`${taskSnapshot.bytesTransferred}` / `${taskSnapshot.totalBytes}` * 100) ) +'%' ,progressTxt:'Completed',stausType:'Uploading',mediaTYpe:'Image',internetType:'wifi',__typename: 'UploadVideoBackgroundStatus'}},})
@@ -377,7 +376,7 @@ const VideoUploadComponent = ({navigation, route,...props }) => {
 
         let behId = !obsData[0].behaviorId ? 0 : parseInt(obsData[0].behaviorId);
         let dte = moment(new Date()).format("YYYYMMDDHHmmss");
-        let filename = "Observations_Thumbnails/"+obsData[0].petId.toString() + behId.toString() + dte+"."+"jpg";
+        let filename = "Observation_ThumbImages/"+obsData[0].petId.toString() + behId.toString() + dte+"."+"jpg";
         let reference = storage().ref(filename); // 2
         let task = reference.putFile(fileUrl); // 3
             task.on('state_changed', taskSnapshot => {
@@ -399,8 +398,7 @@ const VideoUploadComponent = ({navigation, route,...props }) => {
         let behId = !obsData[0].behaviorId ? 0 : parseInt(obsData[0].behaviorId);
         // let dte = moment(new Date()).format("YYYYMMDDHHmmss");
         // let filename = "Observations_Videos/"+obsData[0].petId.toString() + behId.toString() + obsData.fileName+"."+"mp4";
-        let filename = "Observations_Videos/"+ obsData[0].videos[fbVideoLength.current].fileName;
-
+        let filename = "Observation_Videos/"+ obsData[0].videos[fbVideoLength.current].fileName;
         let reference = storage().ref(filename);
         let task = reference.putFile(fileUrl);
             task.on('state_changed', taskSnapshot => {

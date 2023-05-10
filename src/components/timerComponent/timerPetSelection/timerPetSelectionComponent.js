@@ -17,6 +17,7 @@ const  TimerPetSelectionComponent = ({navigation, route, ...props }) => {
 
     useEffect(() => {
 
+        BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
         const focus = navigation.addListener("focus", () => {
             set_Date(new Date());
             initialSessionStart();
@@ -59,7 +60,7 @@ const  TimerPetSelectionComponent = ({navigation, route, ...props }) => {
     }, [route.params?.petsArray,route.params?.defaultPetObj]);
   
     const handleBackButtonClick = () => {
-          navigateToPrevious();
+        //   navigateToPrevious();
           return true;
     };
 

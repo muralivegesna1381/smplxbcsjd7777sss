@@ -1,5 +1,5 @@
 import React, {useState,useEffect,useRef} from 'react';
-import {Text, View,Platform,PermissionsAndroid,StyleSheet,BackHandler} from 'react-native';
+import {Text, View,Platform,PermissionsAndroid,StyleSheet,BackHandler, ImageBackground} from 'react-native';
 import {heightPercentageToDP as hp, widthPercentageToDP as wp,} from "react-native-responsive-screen";
 import BottomComponent from "../../../utils/commonComponents/bottomComponent";
 import fonts from '../../../utils/commonStyles/fonts'
@@ -14,6 +14,8 @@ import * as DataStorageLocal from "./../../../utils/storage/dataStorageLocal";
 import ImageSequence from 'react-native-image-sequence';
 import * as firebaseHelper from './../../../utils/firebase/firebaseHelper';
 import perf from '@react-native-firebase/perf';
+
+let hpn1Img = require( "./../../../../assets/images/sensorImages/png/hpn1ConnectImg.png");
 
 let trace_inSensorsInitialcreen;
 
@@ -132,7 +134,7 @@ const SensorInitialComponent = ({navigation, route, ...props }) => {
       }
       firebaseHelper.logEvent(firebaseHelper.event_Sensor_type, firebaseHelper.screen_Senosor_Initial, "Getting Sensor Type", 'Device Type : '+sensorTy);
       if(sensorTy && sensorTy.includes('HPN1')){
-        set_sensorImages(hSImages);
+        // set_sensorImages(hSImages);
       } else {
         set_sensorImages(sImages);
       }
@@ -162,9 +164,23 @@ const SensorInitialComponent = ({navigation, route, ...props }) => {
         set_popUpMessage(undefined);
     };
 
+    const requestBLEPermissions = async () => {
+     // console.log("Condition works 2")
+      const res = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+      await PermissionsAndroid.requestMultiple([ PermissionsAndroid.PERMISSIONS.BLUETOOTH_SCAN, PermissionsAndroid.PERMISSIONS.BLUETOOTH_CONNECT])
+      console.log(res)
+    }
+
     const checkBleState = () => {
     
     if (Platform.OS === "android") {
+
+      if(Platform.Version>=31){
+        //console.log("Condition works")
+        requestBLEPermissions();
+
+      }
+
         if (Platform.Version >= 29) {
           PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
           ).then((result) => {
@@ -251,10 +267,15 @@ return (
 
                  <View style = {styles.videoViewStyle}>
 
-                    {sensorImages && sensorImages.length > 0 ? <ImageSequence
+                  {sensorType && sensorType.includes('HPN1') ? 
+
+<ImageBackground source={hpn1Img} style={styles.sensoHpn1Styles}></ImageBackground>
+                   : (sensorImages && sensorImages.length > 0 ? <ImageSequence
                             images={sensorImages}
                             framesPerSecond={6}
-                            style={sensorType && sensorType.includes('HPN1') ? [styles.videoStyle] : [styles.videoStyle1]} /> : null}
+                            style={[styles.videoStyle1]} /> : null)}
+
+                    
 
                  </View> 
 
@@ -332,5 +353,12 @@ const styles = StyleSheet.create({
       width:wp('100%'),
       height:hp('33%'),
     },
+
+    sensoHpn1Styles : {
+      width:wp('80%'),
+      aspectRatio:1,
+      resizeMode:'contain',
+      alignSelf:'center'
+    }
 
 });

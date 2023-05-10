@@ -191,8 +191,8 @@ const SensorTypeComponent = ({ navigation, route, ...props }) => {
 
                             <View style={styles.imgBckViewStyle}>
                                 <ImageBackground
-                                    source={require("./../../../../assets/images/sensorImages/png/hpon1NochargeImg.png")}
-                                    style={[styles.petImgStyle, { width: wp("10%"), }]}
+                                    source={require("./../../../../assets/images/sensorImages/svg/sensorIcon.svg")}
+                                    style={[styles.petImgStyle, { width: wp("15%"), }]}
                                     resizeMode='contain'
                                 >
                                 </ImageBackground>

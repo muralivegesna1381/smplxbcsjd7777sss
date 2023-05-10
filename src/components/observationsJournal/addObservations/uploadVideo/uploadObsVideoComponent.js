@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {View,BackHandler,Platform,AppState} from 'react-native';
 import UploadObsVideoUI from './uploadObsVideoUI';
 import RNVideoHelper from "react-native-video-helper";
-import MultipleImagePicker from '@baronha/react-native-multiple-image-picker';
+import MultipleImagePicker from '@ko-developerhong/react-native-multiple-image-picker';
 import * as DataStorageLocal from "./../../../../utils/storage/dataStorageLocal";
 import * as Constant from "./../../../../utils/constants/constant";
 import * as ImagePicker from 'react-native-image-picker';

@@ -5,7 +5,7 @@ import * as DataStorageLocal from "./../../utils/storage/dataStorageLocal";
 import * as Constant from "./../../utils/constants/constant";
 import BuildEnv from './../../config/environment//environmentConfig';
 import { PermissionsAndroid } from 'react-native';
-import MultipleImagePicker from '@baronha/react-native-multiple-image-picker';
+import MultipleImagePicker from '@ko-developerhong/react-native-multiple-image-picker';
 import BuildEnvJAVA from './../../config/environment/enviJava.config';
 import * as Apolloclient from './../../config/apollo/apolloConfig';
 import * as Queries from "./../../config/apollo/queries";

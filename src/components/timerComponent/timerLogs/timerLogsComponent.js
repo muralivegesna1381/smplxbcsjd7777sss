@@ -25,10 +25,10 @@ const  TimerLogsComponent = ({navigation, route, ...props }) => {
       firebaseHelper.logEvent(firebaseHelper.event_screen, firebaseHelper.screen_timer_logs, "User in Timer Logs Screen", '');
       getTimerLogDetails();
 
-      BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
-      return () => {
-        BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
-      };
+      // BackHandler.addEventListener('hardwareBackPress', handleBackButtonClick);
+      // return () => {
+      //   BackHandler.removeEventListener('hardwareBackPress', handleBackButtonClick);
+      // };
 
     }, []);
 
@@ -45,7 +45,6 @@ const  TimerLogsComponent = ({navigation, route, ...props }) => {
     }, [route.params?.timerPets,route.params?.isFrom]);
 
     useEffect(() => {
-      console.log('Timer Logs ',getTimerData)
       
           if (getTimerData && getTimerData.timerLogs.responseMessage) {
             
@@ -67,10 +66,10 @@ const  TimerLogsComponent = ({navigation, route, ...props }) => {
     
     }, [getTimerLoading, getTimerError, getTimerData]);
 
-    const handleBackButtonClick = () => {
-        navigateToPrevious();
-        return true;
-    };
+    // const handleBackButtonClick = () => {
+    //     navigateToPrevious();
+    //     return true;
+    // };
 
     const getTimerLogDetails = async () => {
         set_isLoading(true);

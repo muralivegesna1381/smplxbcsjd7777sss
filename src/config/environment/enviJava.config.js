@@ -28,18 +28,29 @@ export const JAVACLOUDAPI = {
       "https://wms-uat-ygue7fpaba-uc.a.run.app/wearables_mobile_services/app/",
       isHPN1Bcon: true,
   };
+
+   //////GCP CLOUD RUN UAT URL ///////////
+   export const JAVAPRODAPI = {
+    uri:
+      "https://mobileservices.wearablesclinicaltrials.com/wearables_mobile_services/app/",
+      isHPN1Bcon: true,
+  };
+  
   
   //const bundleId = JAVACLOUDAPI
   // const bundleId = "JAVAINTESTAPI";
   // const bundleId = "JAVAQAAPI";
-  const bundleId = "JAVAUATAPI";
-  
+  // const bundleId = "JAVAUATAPI";
+  const bundleId = "JAVAPRODAPI";
+
   export let env = "";
   if (bundleId === "DEV") {
     env = "DEV";
+  } else if (bundleId === "JAVAPRODAPI") {
+    env = "JAVAPRODAPI";
   } else if (bundleId === "JAVACLOUDAPI") {
     env = "JAVACLOUDAPI";
-  }else if (bundleId === "JAVAINTESTAPI") {
+  } else if (bundleId === "JAVAINTESTAPI") {
     env = "JAVAINTESTAPI";
   } else if (bundleId === "JAVAUATAPI") {
     env = "JAVAUATAPI";
@@ -52,6 +63,7 @@ export const JAVACLOUDAPI = {
   const BaseJava = {
     EnvironmentJava: function() {
       if (env === "JAVACLOUDAPI") return JSON.stringify(JAVACLOUDAPI);
+      else if (env === "JAVAPRODAPI") return JSON.stringify(JAVAPRODAPI);
       else if (env === "JAVAINTESTAPI") return JSON.stringify(JAVAINTESTAPI);
       else if (env === "JAVAUATAPI") return JSON.stringify(JAVAUATAPI);
       else if (env === "JAVAQAAPI") return JSON.stringify(JAVAQAAPI);

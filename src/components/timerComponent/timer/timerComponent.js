@@ -63,7 +63,7 @@ const TimerComponent = ({navigation, route, ...props }) => {
     };
 
     const handleBackButtonClick = () => {
-        navigateToPrevious();
+        // navigateToPrevious();
         return true;
     };
 
